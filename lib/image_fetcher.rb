@@ -15,4 +15,16 @@ class ImageFetcher
     return url_list
   end
 
+
+  def download_image(url, image_name)
+    Dir.mkdir('./images') unless Dir.exist?('./images')
+    dest = File.join('./images', image_name)
+
+    open(url) do |u|
+      File.open(dest, 'wb') do |f|
+        f.write(u.read)
+      end
+    end
+  end
+
 end
