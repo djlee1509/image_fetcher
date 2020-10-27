@@ -2,7 +2,6 @@ GEM
   remote: https://rubygems.org/
   specs:
     diff-lcs (1.4.4)
-    fileutils (1.4.1)
     open-uri (0.1.0)
     rspec (3.9.0)
       rspec-core (~> 3.9.0)
@@ -22,7 +21,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  fileutils
   open-uri
   rspec
 
