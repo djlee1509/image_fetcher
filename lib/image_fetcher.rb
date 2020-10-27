@@ -4,24 +4,29 @@ require 'down'
 
 class ImageFetcher
 
-  def main(text_file)
+  def initialize
+    @url_list = []
+  end
+
+  def fetch_image(text_file)
     urls = read_file(text_file)
+    img_regex = /([.|\w|\s|-])*\.(?:jpg)/
     urls.each do |url|
-      img_name = url.split('/')[-1]
-      download_image(url, img_name)
+      img_name = url.match(img_regex)
+      download_image(url, "image_#{img_name.to_s}")
     end
   end
 
+
   # Read Text file and return list of URLs in an array.
   def read_file(text_file)
-    url_list = []
     File.open(text_file, "r") do |f|
       f.each_line do |line|
-        url_list.append(line.delete("\n"))
+        @url_list.append(line.delete("\n"))
       end
     end
 
-    return url_list
+    return @url_list
   end
 
 
@@ -33,13 +38,6 @@ class ImageFetcher
     dest = File.join(save_path, image_name)
 
     Down.download(url, destination: dest)
-
-
-    # open(url) do |img|
-    #   File.open(dest, "wb") do |f|
-    #     f.write(img.read)
-    #   end
-    # end
   end
 
 end
