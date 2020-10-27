@@ -9,9 +9,9 @@ imagefetcher = ImageFetcher.new
 
 
 if ARGV.length == 1
-  puts "Script "
   text_file = ARGV[0]
   imagefetcher.fetch_image(text_file)
+  puts "Success!"
   exit
 else
   puts "#{ARGV.length} arguments provided. Requires only one argument, plain text file which contains the list of URLs."
