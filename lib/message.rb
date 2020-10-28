@@ -1,6 +1,7 @@
 class Message
-  def wrong_number_of_arguments
-    return "Error! #{ARGV.length} arguments provided. Requires only one argument, plain text file which contains the list of URLs."
+
+  def wrong_number_of_arguments(num)
+    return "Error! #{num} arguments provided. Requires only one argument, plain text file which contains the list of URLs."
   end
 
 
